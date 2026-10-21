@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="50%" stop-color="#0b1329"/>
+      <stop offset="100%" stop-color="#080e1c"/>
+    </linearGradient>
+
+    <radialGradient id="meshCyan" cx="20%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="meshEmerald" cx="80%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="meshPurple" cx="50%" cy="85%" r="45%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <linearGradient id="lineGradCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#E2E8F0"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+
+    <linearGradient id="tagGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="420" rx="16" fill="url(#bgGrad)"/>
+  <rect width="1200" height="420" rx="16" fill="url(#meshCyan)"/>
+  <rect width="1200" height="420" rx="16" fill="url(#meshEmerald)"/>
+  <rect width="1200" height="420" rx="16" fill="url(#meshPurple)"/>
+
+  <!-- Subtle Grid Lines -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="420"/>
+    <line x1="250" y1="0" x2="250" y2="420"/>
+    <line x1="400" y1="0" x2="400" y2="420"/>
+    <line x1="550" y1="0" x2="550" y2="420"/>
+    <line x1="700" y1="0" x2="700" y2="420"/>
+    <line x1="850" y1="0" x2="850" y2="420"/>
+    <line x1="1000" y1="0" x2="1000" y2="420"/>
+    <line x1="1150" y1="0" x2="1150" y2="420"/>
+    <line x1="0" y1="70" x2="1200" y2="70"/>
+    <line x1="0" y1="140" x2="1200" y2="140"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="280" x2="1200" y2="280"/>
+    <line x1="0" y1="350" x2="1200" y2="350"/>
+  </g>
+
+  <!-- Topology Graph Overlay in Background (Right Half) -->
+  <g opacity="0.65">
+    <!-- Links -->
+    <path d="M 880 90 L 780 180" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4" opacity="0.6"/>
+    <path d="M 880 90 L 980 180" stroke="#38bdf8" stroke-width="2" opacity="0.8"/>
+    <path d="M 780 180 L 710 280" stroke="#34d399" stroke-width="2" opacity="0.7"/>
+    <path d="M 780 180 L 820 280" stroke="#34d399" stroke-width="2" opacity="0.7"/>
+    <path d="M 980 180 L 940 280" stroke="#34d399" stroke-width="2" opacity="0.7"/>
+    <path d="M 980 180 L 1050 280" stroke="#34d399" stroke-width="2" opacity="0.7"/>
+    <path d="M 780 180 L 980 180" stroke="#818cf8" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.7"/>
+
+    <!-- Pulse Wave ECG through Core -->
+    <path d="M 620 210 L 680 210 L 700 170 L 715 250 L 735 150 L 755 230 L 775 210 L 880 210 L 900 175 L 915 240 L 935 210 L 1120 210"
+          stroke="url(#lineGradCyan)" stroke-width="2.5" fill="none" filter="url(#glow)"/>
+
+    <!-- Tier 1 Core Switch Node -->
+    <g transform="translate(880, 90)">
+      <circle r="22" fill="#0b132b" stroke="#38bdf8" stroke-width="2.5" filter="url(#glow)"/>
+      <circle r="8" fill="#38bdf8"/>
+      <text y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">CORE (Tier 1)</text>
+    </g>
+
+    <!-- Tier 2 Distribution Switch Nodes -->
+    <g transform="translate(780, 180)">
+      <circle r="18" fill="#0b132b" stroke="#818cf8" stroke-width="2" filter="url(#glow)"/>
+      <circle r="6" fill="#818cf8"/>
+      <text y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#a5b4fc" text-anchor="middle">DIST 01</text>
+    </g>
+    <g transform="translate(980, 180)">
+      <circle r="18" fill="#0b132b" stroke="#818cf8" stroke-width="2" filter="url(#glow)"/>
+      <circle r="6" fill="#818cf8"/>
+      <text y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#a5b4fc" text-anchor="middle">DIST 02</text>
+    </g>
+
+    <!-- Tier 3 Access Switch Nodes -->
+    <g transform="translate(710, 280)">
+      <circle r="14" fill="#0b132b" stroke="#34d399" stroke-width="2" filter="url(#glow)"/>
+      <circle r="5" fill="#34d399"/>
+      <text y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#6ee7b7" text-anchor="middle">ACC 01</text>
+    </g>
+    <g transform="translate(820, 280)">
+      <circle r="14" fill="#0b132b" stroke="#34d399" stroke-width="2" filter="url(#glow)"/>
+      <circle r="5" fill="#34d399"/>
+      <text y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#6ee7b7" text-anchor="middle">ACC 02</text>
+    </g>
+    <g transform="translate(940, 280)">
+      <circle r="14" fill="#0b132b" stroke="#34d399" stroke-width="2" filter="url(#glow)"/>
+      <circle r="5" fill="#34d399"/>
+      <text y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#6ee7b7" text-anchor="middle">ACC 03</text>
+    </g>
+    <g transform="translate(1050, 280)">
+      <circle r="14" fill="#0b132b" stroke="#34d399" stroke-width="2" filter="url(#glow)"/>
+      <circle r="5" fill="#34d399"/>
+      <text y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#6ee7b7" text-anchor="middle">ACC 04</text>
+    </g>
+  </g>
+
+  <!-- Left Side: Content & Branding -->
+  <g transform="translate(70, 75)">
+    <!-- Pill Badge -->
+    <rect width="265" height="32" rx="16" fill="#1e293b" fill-opacity="0.8" stroke="#38bdf8" stroke-opacity="0.4" stroke-width="1.2"/>
+    <circle cx="16" cy="16" r="4.5" fill="#10b981" filter="url(#glow)"/>
+    <text x="30" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" letter-spacing="0.5">NEXT-GEN CAMPUS AUDIT</text>
+    <text x="195" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500" fill="#94a3b8">· v2.0.0</text>
+
+    <!-- Main Title -->
+    <text y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="46" font-weight="800" fill="url(#titleGrad)" letter-spacing="-1">Network Health Reporter</text>
+
+    <!-- Tagline Subtitle -->
+    <text y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="600" fill="url(#tagGrad)" letter-spacing="-0.3">
+      Cross-Platform Telemetry Auditor · Visio VSDX &amp; Multi-Tier Topology
+    </text>
+
+    <!-- Description Paragraph -->
+    <text y="172" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="400" fill="#94a3b8" width="560">
+      Enterprise Cisco campus telemetry analyzer with orthogonal layout routing,
+    </text>
+    <text y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="400" fill="#94a3b8">
+      automated CDP/LLDP discovery, risk scoring, and 100% read-only safety.
+    </text>
+
+    <!-- Feature Pills -->
+    <g transform="translate(0, 230)">
+      <!-- Pill 1 -->
+      <rect width="135" height="34" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="67" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc" text-anchor="middle">⚡ 100% Read-Only</text>
+
+      <!-- Pill 2 -->
+      <g transform="translate(145, 0)">
+        <rect width="135" height="34" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+        <text x="67" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc" text-anchor="middle">📐 Native Visio VSDX</text>
+      </g>
+
+      <!-- Pill 3 -->
+      <g transform="translate(290, 0)">
+        <rect width="145" height="34" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+        <text x="72" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc" text-anchor="middle">🌐 Cross-Platform UI</text>
+      </g>
+
+      <!-- Pill 4 -->
+      <g transform="translate(445, 0)">
+        <rect width="135" height="34" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+        <text x="67" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc" text-anchor="middle">📊 Executive Excel</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Border Gradient Stroke -->
+  <rect width="1198" height="418" x="1" y="1" rx="15" fill="none" stroke="#38bdf8" stroke-opacity="0.25" stroke-width="1.5"/>
+</svg>

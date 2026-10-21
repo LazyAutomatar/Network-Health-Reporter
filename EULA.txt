@@ -1,1 +1,70 @@
+END-USER LICENSE AGREEMENT (EULA) FOR NETWORK HEALTH REPORTER
+================================================================================
+IMPORTANT: PLEASE READ THE TERMS AND CONDITIONS OF THIS LICENSE AGREEMENT 
+CAREFULLY BEFORE INSTALLING, COPYING, OR USING NETWORK HEALTH REPORTER.
 
+Copyright (c) 2026 Conventus Technologies Pvt. Ltd. All rights reserved.
+Official Distribution Channel: https://github.com/LazyAutomatar/Network-Health-Reporter
+================================================================================
+
+1. GRANT OF LICENSE (CLOSED SOURCE FREEWARE)
+Conventus Technologies Pvt. Ltd. ("Licensor") hereby grants you a personal,
+non-exclusive, non-transferable, royalty-free license to download, install, and 
+run the official binary releases of Network Health Reporter ("Software") for 
+both commercial and personal use, including enterprise network health audits, 
+IT assessments, consulting engagements, and academic or internal evaluations.
+
+2. RESTRICTIONS
+a. Proprietary & Closed Source: The Software is protected by copyright and 
+   intellectual property laws. The Software is licensed as compiled binary 
+   freeware. You shall not decompile, disassemble, reverse engineer, decrypt, 
+   or attempt to derive the source code of the Software or any portion thereof,
+   except to the extent permitted by mandatory applicable law.
+b. No Resale or White-Labeling: You may not sell, rent, lease, sub-license, or 
+   charge commercial fees for the distribution of the Software binary, installer, 
+   or documentation without prior written permission from the Licensor.
+c. Integrity & Notices: You may not modify, alter, or remove any copyright 
+   notices, branding, digital signatures, or proprietary markings from the 
+   Software, its setup packages, or its generated output files and reports.
+d. Unmodified Redistribution: Redistribution of the official, unmodified 
+   binary installers and zip packages is permitted provided that this EULA 
+   remains attached and full credit is attributed to the Licensor.
+
+3. NETWORK SAFETY & READ-ONLY ASSURANCE
+Network Health Reporter is engineered strictly as a non-disruptive, read-only 
+diagnostic and visualization utility. Telemetry ingestion is confined to 
+standard read-only diagnostic commands (e.g., "show" commands) and offline CLI 
+log analysis. The Software does not execute configuration changes, write 
+transactions, or invasive control-plane commands on managed devices.
+
+4. UPDATES & TELEMETRY
+The Software includes an integrated update service that periodically queries 
+the official GitHub release channel for available updates. No proprietary 
+network topology data, credentials, customer configuration snippets, or 
+internal network designs are transmitted to the Licensor or third parties.
+
+5. DISCLAIMER OF WARRANTIES
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY 
+KIND, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING, WITHOUT 
+LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR 
+PURPOSE, AND NON-INFRINGEMENT. LICENSOR DOES NOT WARRANT THAT THE FUNCTIONS 
+CONTAINED IN THE SOFTWARE WILL MEET YOUR REQUIREMENTS OR THAT THE OPERATION OF 
+THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE.
+
+6. LIMITATION OF LIABILITY
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL CONVENTUS 
+TECHNOLOGIES PVT. LTD., ITS DIRECTORS, EMPLOYEES, OR AFFILIATES BE LIABLE FOR 
+ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, 
+WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, 
+LOSS OF NETWORK ACCESS, LOSS OF DATA, OR ANY OTHER PECUNIARY LOSS) ARISING OUT OF 
+THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF LICENSOR HAS BEEN ADVISED 
+OF THE POSSIBILITY OF SUCH DAMAGES.
+
+7. GOVERNING LAW
+This Agreement shall be governed by and construed in accordance with the laws of 
+India, without giving effect to any principles of conflicts of law.
+
+================================================================================
+For licensing inquiries, bug reporting, or hardware platform requests:
+https://github.com/LazyAutomatar/Network-Health-Reporter/issues
+================================================================================
