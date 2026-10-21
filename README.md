@@ -166,10 +166,13 @@ show wireless client summary     // (On WLC)
 
 Official production releases and package distributions are hosted on [LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter).
 
+### [2.0.5] - 2026-10-21
+* **Developer Attribution** — Maintained author attribution as Yash Nalawde across title bar pill and About view with direct links to the LazyAutomatar release repository and issue tracker.
+
 ### [2.0.4] - 2026-10-21
 * **Silent Background Auto-Updater** — Inno Setup configured with `/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS` and automatic silent relaunch, enabling true zero-friction in-place upgrades.
 * **In-App Release Changelog Viewer** — Expandable "Release Changelog & History" card and viewer directly in the **About** view for offline release notes inspection.
-* **Developer Details to LazyAutomatar** — Standardized branding, author attribution, and links to `LazyAutomatar` across the title bar pill, assembly metadata, installer properties, and About view.
+* **Developer Attribution** — Preserved author details as Yash Nalawde across the title bar pill and About view with direct links to the official LazyAutomatar release channel and issue tracker.
 * **Title Bar Spacing Optimization** — Added 78px clearance on macOS for native Apple traffic light window controls, and 142px gutter on Windows with unified 28px pill height and 14px rounded corners.
 
 ### [2.0.3] - 2026-10-21
