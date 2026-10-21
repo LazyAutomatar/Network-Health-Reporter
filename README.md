@@ -18,7 +18,7 @@
 
 <br>
 
-[**Download**](#download) · [**Features**](#features) · [**Screenshots**](#screenshots) · [**Hardware Support**](#supported-hardware) · [**Telemetry Commands**](#telemetry--commands-guide) · [**Changelog**](CHANGELOG.md) · [**Release Control & Tags**](#release-control--tagging) · [**Architecture**](#architecture) · [**Feedback & Issues**](#feedback--support) · [**License & EULA**](#license)
+[**Download**](#download) · [**Features**](#features) · [**Screenshots**](#screenshots) · [**Hardware Support**](#supported-hardware) · [**Telemetry Commands**](#telemetry--commands-guide) · [**Changelog**](#changelog) · [**Feedback & Issues**](#feedback--support) · [**License & EULA**](#license)
 
 <br>
 
@@ -162,58 +162,43 @@ show wireless client summary     // (On WLC)
 
 ---
 
-## <a id="release-control--tagging"></a>Release Control & Versioning
+## <a id="changelog"></a>Changelog & Release History
 
-Releases are governed by strict [Semantic Versioning (SemVer)](https://semver.org/) and automated through Git release tags:
+Development and official releases are synchronized across both the internal development repository ([Majordean0303/Network-Health-Reporter](https://github.com/Majordean0303/Network-Health-Reporter)) and the public distribution repository ([LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter)).
 
-```
-v<MAJOR>.<MINOR>.<PATCH>  (e.g., v2.0.0, v2.1.0)
-```
+### [2.0.4] - 2026-10-21
+* **Silent Background Auto-Updater** — Inno Setup configured with `/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS` and automatic silent relaunch, enabling true zero-friction in-place upgrades.
+* **In-App Release Changelog Viewer** — Expandable "Release Changelog & History" card and viewer directly in the **About** view for offline release notes inspection.
+* **Developer Details to LazyAutomatar** — Standardized branding, author attribution, and links to `LazyAutomatar` across the title bar pill, assembly metadata, installer properties, and About view.
+* **Title Bar Spacing Optimization** — Added 78px clearance on macOS for native Apple traffic light window controls, and 142px gutter on Windows with unified 28px pill height and 14px rounded corners.
 
-### Creating & Publishing a New Release
+### [2.0.3] - 2026-10-21
+* **Authenticode Digital Code Signing** — Automated Authenticode signing pipeline in `publish-all.ps1` signing both standalone binaries (`NetworkHealthReporter.exe`) and installer wizards (`NetworkHealthReporter_Setup.exe`) with Conventus Technologies publisher identity.
+* **Enterprise Certificate Export** — Automatically exports `ConventusTechnologies_CodeSigning.cer` with releases for domain and workstation Trusted Publishers enrollment, eliminating Windows SmartScreen warnings.
+* **Official End-User License Agreement (EULA)** — Added formal `EULA.txt` governing enterprise freeware usage, distribution rights, and read-only non-invasive guarantees. Integrated into Inno Setup installation wizard.
+* **Automated Public Repository Sync** — CI pipeline automatically synchronizes `README.md`, `EULA.txt`, `LICENSE.md`, `CHANGELOG.md`, and visual release assets to the public release repository (`LazyAutomatar/Network-Health-Reporter`).
 
-To publish a new official release with automated multi-platform builds:
+### [2.0.2] - 2026-10-21
+* **Resilient Update Pipeline** — Extended manifest check timeout to 60s and binary download timeout to 10 minutes to support high-latency, metered, or filtered enterprise WAN networks.
+* **Proxy & HTTP Compression** — Added system default `WebProxy` discovery (`UseProxy = true`) and automated GZip/Deflate payload decompression.
+* **CI Test Suite Hardening** — Resolved port binding race conditions in `DeviceSessionTests` across automated GitHub Actions runners.
 
-1. **Tag the commit**:
-   ```bash
-   git checkout main
-   git pull origin main
-   git tag -a v2.0.3 -m "Release v2.0.3"
-   git push origin v2.0.3
-   ```
-2. **Automated GitHub Actions Pipeline**:
-   * Pushing a tag matching `v*` triggers [`.github/workflows/release.yml`](.github/workflows/release.yml).
-   * The pipeline verifies all 262 unit tests, compiles the cross-platform binaries, generates setup installers, and publishes the release on GitHub with changelog notes and attached release binaries.
+### [2.0.1] - 2026-10-21
+* **In-App Auto-Update Checker** — In-app notification and one-click upgrade installation directly from the **About** view.
+* **Cryptographic Verification** — Validates binary payload integrity against SHA-256 hashes published in release manifests prior to staging or execution.
+* **PE Header Safety Interceptor** — Validates Win32 executable magic byte signatures (`MZ`) before executing setup processes.
 
-3. **Local Release Pipeline**:
-   To generate all release binaries locally without CI:
-   ```powershell
-   ./publish-all.ps1 -Configuration Release
-   ```
-   All packages are placed in the `dist/` directory ready for distribution.
+### [2.0.0] - 2026-10-20
+* **Avalonia UI 11.2 Desktop Architecture** — Cross-platform desktop interface featuring fluent dark slate aesthetic, acrylic accents, and high-DPI scaling.
+* **Multi-Tier Campus Topology Engine** — Automated hierarchy categorization across Tier 1 (Core), Tier 2 (Distribution), and Tier 3 (Access) with WLC and AP layers.
+* **Orthogonal Manhattan Bus Routing** — Collision-free orthogonal routing with 80px channel separation, eliminating overlapping links across dense enterprise networks.
+* **Multi-Token 25G/40G/100G Port Parser** — Resilient CDP/LLDP port pair resolution across modern multi-speed uplinks (`Twe`, `Ten`, `Fo`, `Hu`, `Gig`).
+* **0–100 Weighted Site Health Scoring** — Instant health composite across Switching, Wireless RF, Topology redundancy, and Network Safety.
+* **Native Microsoft Visio VSDX Exporter** — Direct export to genuine Microsoft Visio (`.vsdx`) diagrams with official network master stencils.
+* **Executive PDF & Handover Excel Exporters** — High-resolution QuestPDF executive audit reports and 6-sheet formatted Excel workbooks.
+* **Multi-Platform Native Binaries** — Standalone self-contained packages for Windows x64, macOS Apple Silicon (ARM64), macOS Intel (x64), and Linux (x64/ARM64).
 
----
-
-## <a id="architecture"></a>System Architecture & Capabilities
-
-The application engine is engineered into cleanly decoupled, test-driven .NET 8 modules:
-
-```
-Network Health Reporter/
-├── NetHealth.Core/             # Telemetry parsing, discovery agents, topology bridge, anomaly scoring
-│   ├── Agents/                 # DiscoveryAgent (CDP/LLDP), SwitchingAgent, WirelessAgent, SynthesisAgent
-│   ├── Analysis/               # OfflineLogParserService (Batch log parser, multi-tier uplink resolution)
-│   ├── Reporting/              # Visio VSDX Exporter, Handover Excel Exporter, PDF Generator
-│   ├── Schemas/                # Data contracts (DiscoveryContract, SwitchingContract, WirelessContract)
-│   └── Topology/               # GraphEngine, TopologyBridge, DiagramLayoutEngine (Manhattan bus routing)
-├── NetHealth.Desktop/          # Avalonia UI Native Cross-Platform Application (Windows, macOS, Linux)
-│   ├── Views/                  # MainWindow, DashboardView, TopologyView, AuditView, SettingsView
-│   ├── ViewModels/             # ReactiveUI MVVM ViewModels
-│   └── Assets/                 # High-resolution vector assets, app icon (.ico / .png)
-├── NetHealth.Tests/            # Comprehensive xUnit test suite (262 tests covering all engines)
-├── docs/                       # Documentation, architecture specs, and GitHub Pages website
-└── dist/                       # Output directory for compiled multi-platform release packages
-```
+> Complete change history is tracked in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 

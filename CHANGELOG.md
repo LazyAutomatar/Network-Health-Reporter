@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.0.4] - 2026-10-21
+
+### Added
+- **Silent Background Auto-Updater**: Configured Inno Setup with `/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS` and automatic silent relaunch, providing a true zero-interruption, one-click in-place update experience.
+- **In-App Release Changelog Preview**: Added an expandable "Release Changelog & History" card and viewer directly to the **About** view, allowing users to browse version release notes and security highlights offline at any time.
+
+### Changed
+- **Developer Details to LazyAutomatar**: Standardized branding, author attribution, and links to `LazyAutomatar` across the title bar pill, assembly metadata, installer properties, and About view.
+- **Title Bar Spacing Optimization**:
+  - Windows: Adjusted caption gutter to 142px to eliminate excessive empty void next to window controls.
+  - macOS: Added 78px left clearance to guarantee zero overlap with native Apple traffic light window controls (close/minimize/zoom), and natural 14px right margin.
+  - Standardized all title bar controls (Zoom pill, Developer pill, Dark Mode button) to a uniform 28px height, 14px pill corner radius, and 8px inter-item spacing.
+
+---
+
 ## [2.0.3] - 2026-10-21
 
 ### Added
