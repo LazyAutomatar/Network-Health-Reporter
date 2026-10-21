@@ -164,7 +164,7 @@ show wireless client summary     // (On WLC)
 
 ## <a id="changelog"></a>Changelog & Release History
 
-Development and official releases are synchronized across both the internal development repository ([Majordean0303/Network-Health-Reporter](https://github.com/Majordean0303/Network-Health-Reporter)) and the public distribution repository ([LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter)).
+Official production releases and package distributions are hosted on [LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter).
 
 ### [2.0.4] - 2026-10-21
 * **Silent Background Auto-Updater** — Inno Setup configured with `/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS` and automatic silent relaunch, enabling true zero-friction in-place upgrades.
