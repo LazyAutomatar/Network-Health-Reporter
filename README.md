@@ -75,7 +75,7 @@
 * **In-Place Upgrade & Progress** — Streams update installer packages with live progress bars and transparent status messaging.
 * **Cryptographic Verification** — Validates downloaded binary SHA-256 hashes against trusted release manifests prior to execution.
 * **PE Header Safety Interceptor** — Validates Win32 executable magic byte signatures (`MZ`) before staging or running setup.
-* **Authenticode Digital Signatures** — Binaries and setup wizards are digitally signed with Conventus Technologies publisher identity to verify authenticity and minimize SmartScreen prompts.
+* **Authenticode Digital Signatures** — Binaries and setup wizards are digitally signed to verify authenticity and minimize SmartScreen prompts.
 
 ### 📊 Executive Deliverables & Ingestion
 * **Offline Log Parser** — Audit air-gapped networks effortlessly by uploading arbitrary CLI show command outputs or batch log files.
@@ -166,6 +166,12 @@ show wireless client summary     // (On WLC)
 
 Official production releases and package distributions are hosted on [LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter).
 
+### [2.0.6] - 2026-10-21
+* **Solo Project Attribution & Branding Cleanse** — Purged all legacy corporate references across the entire codebase, EULA, packaging, and release pipelines to establish solo project ownership by Yash Nalawde.
+* **Dynamic Release Notes Synchronization** — Automatically extracts release notes directly from `CHANGELOG.md` into `update_manifest.json` on publish, and dynamically injects incoming release notes into the in-app Changelog History viewer so newer notes are previewed before updating.
+* **High-Contrast Theme-Aware Version Tags** — Replaced hardcoded white foreground on version badges with theme-aware `TextFillColorPrimaryBrush` and accent outline on subtle background, guaranteeing WCAG AAA readability in Dark and Light themes.
+* **Certificate Metadata** — Updated code-signing certificate identity to `Network Health Reporter / Yash Nalawde`.
+
 ### [2.0.5] - 2026-10-21
 * **Developer Attribution** — Maintained author attribution as Yash Nalawde across title bar pill and About view with direct links to the LazyAutomatar release repository and issue tracker.
 
@@ -176,8 +182,8 @@ Official production releases and package distributions are hosted on [LazyAutoma
 * **Title Bar Spacing Optimization** — Added 78px clearance on macOS for native Apple traffic light window controls, and 142px gutter on Windows with unified 28px pill height and 14px rounded corners.
 
 ### [2.0.3] - 2026-10-21
-* **Authenticode Digital Code Signing** — Automated Authenticode signing pipeline in `publish-all.ps1` signing both standalone binaries (`NetworkHealthReporter.exe`) and installer wizards (`NetworkHealthReporter_Setup.exe`) with Conventus Technologies publisher identity.
-* **Enterprise Certificate Export** — Automatically exports `ConventusTechnologies_CodeSigning.cer` with releases for domain and workstation Trusted Publishers enrollment, eliminating Windows SmartScreen warnings.
+* **Authenticode Digital Code Signing** — Automated Authenticode signing pipeline in `publish-all.ps1` signing both standalone binaries (`NetworkHealthReporter.exe`) and installer wizards (`NetworkHealthReporter_Setup.exe`) with Authenticode signatures.
+* **Enterprise Certificate Export** — Automatically exports `NetworkHealthReporter_CodeSigning.cer` with releases for domain and workstation Trusted Publishers enrollment, eliminating Windows SmartScreen warnings.
 * **Official End-User License Agreement (EULA)** — Added formal `EULA.txt` governing enterprise freeware usage, distribution rights, and read-only non-invasive guarantees. Integrated into Inno Setup installation wizard.
 * **Automated Public Repository Sync** — CI pipeline automatically synchronizes `README.md`, `EULA.txt`, `LICENSE.md`, `CHANGELOG.md`, and visual release assets to the public release repository (`LazyAutomatar/Network-Health-Reporter`).
 

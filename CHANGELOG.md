@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.0.6] - 2026-10-21
+
+### Changed
+- **Solo Project Attribution & Branding Cleanse**: Removed all legacy company/corporate references across the entire codebase, EULA, release pipeline, and packaging to reflect solo project ownership by Yash Nalawde.
+- **Dynamic Release Notes Synchronization**: `publish-all.ps1` now automatically extracts the exact release notes for each version from `CHANGELOG.md` into `update_manifest.json`. The desktop application dynamically prepends incoming version notes into the in-app Changelog History upon update check so newer release notes are immediately visible before updating.
+- **High-Contrast Theme-Aware Version Tags**: Replaced hardcoded white foreground on version badges with theme-aware `TextFillColorPrimaryBrush` on a subtle pill with accent border, guaranteeing crisp WCAG AAA contrast in both Dark and Light themes.
+- **Certificate Metadata**: Updated code-signing certificate identity to `Network Health Reporter / Yash Nalawde` and exported as `NetworkHealthReporter_CodeSigning.cer`.
+
+---
+
 ## [2.0.5] - 2026-10-21
 
 ### Changed
@@ -32,8 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.3] - 2026-10-21
 
 ### Added
-- **Authenticode Digital Code Signing**: Integrated automated Authenticode code signing into the Windows compilation pipeline (`publish-all.ps1`). Signs both the standalone application executable (`NetworkHealthReporter.exe`) and the Inno Setup installer (`NetworkHealthReporter_Setup.exe`) with Conventus Technologies publisher identity.
-- **Enterprise Certificate Export**: Automatically exports the public code signing certificate (`ConventusTechnologies_CodeSigning.cer`) alongside release artifacts for domain and local machine installation into Trusted Publishers / Trusted Root Certification Authorities to eliminate Windows SmartScreen prompts.
+- **Authenticode Digital Code Signing**: Integrated automated Authenticode code signing into the Windows compilation pipeline (`publish-all.ps1`). Signs both the standalone application executable (`NetworkHealthReporter.exe`) and the Inno Setup installer (`NetworkHealthReporter_Setup.exe`) with Authenticode signatures.
+- **Enterprise Certificate Export**: Automatically exports the public code signing certificate (`NetworkHealthReporter_CodeSigning.cer`) alongside release artifacts for domain and local machine installation into Trusted Publishers / Trusted Root Certification Authorities to eliminate Windows SmartScreen prompts.
 - **Official End-User License Agreement (EULA)**: Added formal `EULA.txt` defining terms for closed-source enterprise freeware use, commercial/personal deployment rights, non-invasive read-only safety guarantees, and reverse engineering restrictions.
 - **Inno Setup EULA Integration**: Embedded `EULA.txt` directly into the Windows setup wizard via Inno Setup `LicenseFile` directive, requiring user agreement before installation.
 - **Automated Public Repo Documentation Sync**: Release pipeline now automatically synchronizes `README.md`, `EULA.txt`, `LICENSE.md`, `CHANGELOG.md`, and visual assets directly to the public release repository (`LazyAutomatar/Network-Health-Reporter`).
