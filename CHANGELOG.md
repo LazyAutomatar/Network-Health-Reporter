@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to the **Network Health Reporter** project will be documented in this file.
 
@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+
+## [2.0.8] - 2026-10-23
+
+### Fixed
+- **Topology routing and view-state integrity**: Match parallel links by layout ID, retain dragged positions across filters, expand rerouted bounds, and avoid invalid or ambiguous endpoint matches.
+- **Live evidence retention and partial assessment coverage**: Retain successful live command outputs, publish coverage notes across dashboard and exports, remove incorrect WLC seed fallback, and honor core-only scope.
+- **Assessment data integrity and cross-platform presentation**: Remove fabricated IPs, inventory and RF data; preserve real 10.22 addresses and unknown-device identity; fix duplicate auditing, upload collisions, stale topology, and bundled fonts.
+
+### Added
+- **Public test-build workflow and clearer handover guidance**: Manual branch builds can publish portable LazyAutomatar prereleases with checksums while keeping stable updates and documentation separate. Reports restores worksheet descriptions; About adds build and platform details, release links and accurate discovery scope.
+- **Vector topology PDF export**: Export the current diagram to an auto-oriented A3 PDF alongside Visio, using background rendering and safe file replacement.
+
+### Changed
+- **Clearer reports and readable topology pages**: Simplified Reports exports, evidence context, expandable inventories, subtle interaction feedback and Fit diagram. Assessment PDFs use vector diagrams and automatic overlapping landscape detail pages for large topologies; export runs in the background and preserves existing files on rendering failure. Removed sample report substitution and fabricated fallback IPs and ports.
+
+---
+
 
 ## [2.0.7] - 2026-10-23
 

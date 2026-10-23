@@ -13,7 +13,7 @@
 [![License: Free to Use](https://img.shields.io/badge/License-Free_to_Use-10b981?style=for-the-badge&labelColor=0d1117)](LICENSE.md)
 [![Distribution: Closed Source | Freeware](https://img.shields.io/badge/Distribution-Closed_Source_%7C_Freeware-6366f1?style=for-the-badge&labelColor=0d1117)](LICENSE.md)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-6366f1?style=for-the-badge&labelColor=0d1117)](https://github.com/LazyAutomatar/Network-Health-Reporter/releases)
-[![Tests Passing](https://img.shields.io/badge/Tests-262%20Passing-10b981?style=for-the-badge&labelColor=0d1117)](https://github.com/LazyAutomatar/Network-Health-Reporter/releases)
+[![Regression Tests](https://img.shields.io/badge/Tests-Automated_Regression_Suite-10b981?style=for-the-badge&labelColor=0d1117)](https://github.com/LazyAutomatar/Network-Health-Reporter/releases)
 [![Framework](https://img.shields.io/badge/.NET%208-Avalonia%20UI-8b5cf6?style=for-the-badge&labelColor=0d1117)](https://dotnet.microsoft.com/)
 
 <br>
@@ -57,6 +57,8 @@
 * **Multi-Token 25G/40G/100G Port Parser** — Accurately pairs high-speed uplink interfaces (`Twe`, `Ten`, `Fo`, `Hu`, `Gig`) across wrapped tabular CDP/LLDP tables.
 * **Interactive Avalonia Canvas** — Multi-node marquee box selection, Ctrl+Click selection, dragging, edge auto-scrolling, and dynamic canvas auto-expansion.
 * **Direct Visio VSDX Exporter** — Generates genuine Microsoft Visio (`.vsdx`) XML drawings with official network master stencils and shape properties.
+* **Vector PDF Export** — Save the current filtered and arranged topology as an auto-oriented A3 PDF. Assessment reports include vector overviews and overlapping detail pages for large diagrams.
+* **Reliable Layout State** — Parallel links retain separate routes, dragged positions survive layer toggles, and export bounds expand to include moved nodes.
 
 ### 🩺 Deep Telemetry & Risk Scoring
 * **0–100 Weighted Site Score** — Instant macro-level health indicator computed across Switching, Wireless RF, Topology, and Safety categories.
@@ -64,6 +66,8 @@
 * **VLAN & MTU Discrepancy Checks** — Detects trunk native VLAN mismatches, MTU mismatches, and asymmetric trunk link configurations.
 * **Hardware & PoE Budgets** — Audits dual power-supply redundancy, fan module states, and PoE capacity per stack member.
 * **Wireless RF Health** — Audits Cisco Catalyst 9800 / AireOS controllers, AP channel utilization, co-channel interference, and client distribution.
+* **Assessment Coverage** — Missing or rejected command output produces coverage notes in the dashboard and reports. Scores reflect available evidence; a partial assessment does not certify full network health.
+* **Evidence and Unknown Values** — Successful live command output is retained for evidence lookup. Missing device addresses, inventory and radio measurements remain unknown rather than receiving sample values.
 
 ### 💻 Cross-Platform Native Experience
 * **Modern Avalonia Desktop UI** — Fluent dark slate aesthetic with responsive layouts, acrylic blur, and vector iconography.
@@ -165,6 +169,15 @@ show wireless client summary     // (On WLC)
 ## <a id="changelog"></a>Changelog & Release History
 
 Official production releases and package distributions are hosted on [LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter).
+
+### [2.0.8] - 2026-10-23
+* **Assessment Integrity** — Removed fabricated fallback addresses, inventory, RF readings and sample report content; retained successful live command evidence and disclosed incomplete command coverage.
+* **Topology & Reports** — Added vector A3 topology PDF export and readable detail pages in assessment PDFs; fixed parallel-link routing, dragged bounds, layer-toggle position retention and invalid endpoints.
+* **Desktop Usability** — Simplified report exports, added Fit diagram, bundled fonts, and clarified build, platform and discovery-scope information.
+* **Merged Release** — Includes all changes from the assessment review and backend branches, including the v2.0.7 Visio identity fix. See the [full changelog](CHANGELOG.md) for release details.
+
+### [2.0.7] - 2026-10-23
+* **Visio Neighbor Identity (BUG-01)** — Preserved distinct hyphenated and underscored hostnames, unified CDP FQDN/serial matching, and prevented arbitrary matches for ambiguous abbreviated names.
 
 ### [2.0.6] - 2026-10-21
 * **Solo Project Attribution & Branding Cleanse** — Purged all legacy corporate references across the entire codebase, EULA, packaging, and release pipelines to establish solo project ownership by Yash Nalawde.
