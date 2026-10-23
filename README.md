@@ -59,6 +59,7 @@
 * **Direct Visio VSDX Exporter** — Generates genuine Microsoft Visio (`.vsdx`) XML drawings with official network master stencils and shape properties.
 * **Vector PDF Export** — Save the current filtered and arranged topology as an auto-oriented A3 PDF. Assessment reports include vector overviews and overlapping detail pages for large diagrams.
 * **Reliable Layout State** — Parallel links retain separate routes, dragged positions survive layer toggles, and export bounds expand to include moved nodes.
+* **Complete CDP Switch Connections** — Observed wires are retained independently of inferred parents, preserving daisy chains, distribution paths and redundant uplinks across import, canvas and exports.
 
 ### 🩺 Deep Telemetry & Risk Scoring
 * **0–100 Weighted Site Score** — Instant macro-level health indicator computed across Switching, Wireless RF, Topology, and Safety categories.
@@ -169,6 +170,11 @@ show wireless client summary     // (On WLC)
 ## <a id="changelog"></a>Changelog & Release History
 
 Official production releases and package distributions are hosted on [LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter).
+
+### [2.1.0] - 2026-10-23
+* **CDP Connectivity Fix (BUG-01)** — Preserve every observed switch connection instead of collapsing the topology into one parent per switch. Reciprocal access neighbors no longer discard the distribution path; parallel ports and redundant uplinks remain intact.
+* **Regression Coverage** — Wrapped CDP tables, reverse import order, core reachability and exported Visio endpoints are checked automatically. Reimport original captures to rebuild assessments created by older versions.
+* **Release Verification** — Scripts validate published package metadata and installer checksums, and compare public README/changelog content with release sources.
 
 ### [2.0.8] - 2026-10-23
 * **Assessment Integrity** — Removed fabricated fallback addresses, inventory, RF readings and sample report content; retained successful live command evidence and disclosed incomplete command coverage.

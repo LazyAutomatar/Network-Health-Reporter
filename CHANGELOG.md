@@ -1,9 +1,19 @@
-# Changelog
+﻿# Changelog
 
 All notable changes to the **Network Health Reporter** project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [2.1.0] - 2026-10-23
+
+### Fixed
+- **BUG-01: preserve observed CDP switch connections**: Retain every observed switch-to-switch wire independently of the inferred parent during discovery, offline merging, live collection and topology export. Reciprocal silo neighbors no longer erase the distribution path; redundant uplinks and parallel physical ports are preserved.
+
+### Added
+- **Release verification scripts**: Compact pipeline status and a single public verification command check published packages, installer SHA-256, version metadata, README and changelog consistency. The local beta build script remains available for isolated Windows testing.
 
 ---
 
