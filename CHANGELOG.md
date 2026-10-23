@@ -1,9 +1,16 @@
-# Changelog
+﻿# Changelog
 
 All notable changes to the **Network Health Reporter** project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [2.0.7] - 2026-10-23
+
+### Fixed
+- **BUG-01 topology neighbor identity**: Preserve distinct hyphenated and underscored hostnames, use shared CDP hostname normalization, and require a unique truncated-name match to prevent Visio links from being redirected to another node.
 
 ---
 
