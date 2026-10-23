@@ -1,0 +1,9 @@
+{
+  "version": "2.2.1",
+  "title": "Network Health Reporter v2.2.1",
+  "releaseNotes": "### Fixed\r\n- **Router chassis identity and topology**: Read chassis PID and serial from inventory, preserve Router role in topology and Excel, count captured physical interfaces and avoid inferred router-to-core links without neighbor evidence.\r\n\r\n---\r\n\r\n### Changed\r\n- **Explicit development-signed release path**: Publish v2.2.1 locally with the existing development identity, verified installer hash and uploaded package digests; disclose SmartScreen limitations. Trusted signing remains required by CI.\r\n- **Public release asset retention**: Keep the newest stable build and preserve release records, tags, manifests and logs while pruning obsolete binary packages after successful releases.",
+  "downloadUrl": "https://github.com/LazyAutomatar/Network-Health-Reporter/releases/download/v2.2.1/NetworkHealthReporter_Setup.exe",
+  "publishedAt": "2026-10-23T10:19:12Z",
+  "sha256": "60AFEAD2EDB866D81AC996B2041BE5265C264E4F3E426C18ADC25AF4D361E8B0",
+  "fileSizeBytes": 54308392
+}

@@ -80,7 +80,8 @@
 * **In-Place Upgrade & Progress** — Streams update installer packages with live progress bars and transparent status messaging.
 * **Cryptographic Verification** — Validates downloaded binary SHA-256 hashes against trusted release manifests prior to execution.
 * **PE Header Safety Interceptor** — Validates Win32 executable magic byte signatures (`MZ`) before staging or running setup.
-* **Authenticode Digital Signatures** — Binaries and setup wizards are digitally signed to verify authenticity and minimize SmartScreen prompts.
+* **Authenticode Digital Signatures** — v2.2.1 uses a self-signed development certificate for the Windows application and installer; SmartScreen warnings remain expected. Automated production releases require a trusted, timestamped signing identity.
+* **Current bugfix (v2.2.1)** — Router chassis inventory, serial numbers, topology roles and observed interface counts are corrected. Only the newest stable release retains binary downloads; earlier release notes and manifests remain available.
 
 ### 📊 Executive Deliverables & Ingestion
 * **Offline Log Parser** — Audit air-gapped networks effortlessly by uploading arbitrary CLI show command outputs or batch log files.
@@ -202,7 +203,7 @@ Official production releases and package distributions are hosted on [LazyAutoma
 
 ### [2.0.3] - 2026-10-21
 * **Authenticode Digital Code Signing** — Automated Authenticode signing pipeline in `publish-all.ps1` signing both standalone binaries (`NetworkHealthReporter.exe`) and installer wizards (`NetworkHealthReporter_Setup.exe`) with Authenticode signatures.
-* **Enterprise Certificate Export** — Automatically exports `NetworkHealthReporter_CodeSigning.cer` with releases for domain and workstation Trusted Publishers enrollment, eliminating Windows SmartScreen warnings.
+* **Enterprise Certificate Export** — Exports the public `NetworkHealthReporter_CodeSigning.cer` for signature inspection and administrator-managed deployment. This does not establish public SmartScreen reputation or change workstation trust automatically.
 * **Official End-User License Agreement (EULA)** — Added formal `EULA.txt` governing enterprise freeware usage, distribution rights, and read-only non-invasive guarantees. Integrated into Inno Setup installation wizard.
 * **Automated Public Repository Sync** — CI pipeline automatically synchronizes `README.md`, `EULA.txt`, `LICENSE.md`, `CHANGELOG.md`, and visual release assets to the public release repository (`LazyAutomatar/Network-Health-Reporter`).
 

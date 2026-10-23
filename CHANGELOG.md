@@ -7,6 +7,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.2.1] - 2026-10-23
+
+### Fixed
+- **Router chassis identity and topology**: Read chassis PID and serial from inventory, preserve Router role in topology and Excel, count captured physical interfaces and avoid inferred router-to-core links without neighbor evidence.
+
+---
+
+### Changed
+- **Explicit development-signed release path**: Publish v2.2.1 locally with the existing development identity, verified installer hash and uploaded package digests; disclose SmartScreen limitations. Trusted signing remains required by CI.
+- **Public release asset retention**: Keep the newest stable build and preserve release records, tags, manifests and logs while pruning obsolete binary packages after successful releases.
+
+---
+
+
+## [2.2.0] - 2026-10-23
+
+### Changed
+- **Local beta: separate data-port speed review**: Keep slow data/access ports in a separate LOW review alert, exclude discovered IP-phone ports including phone/PC shared ports, and keep switch/AP degradation findings separate. Unknown endpoint capability is explicitly marked for review.
+- **Local beta: inspection output**: Remove raw captured output and artifact notices from the inspector and copied inspection; retain verification commands and conditional remediation. Use command-output wording for assessment coverage.
+- **Local beta: topology and inspection usability**: Layer toggles reset and fit the diagram. Add visible-node search, clickable link inspection, complete wrapped switch names, responsive dashboard gauges, multiline tables and a redesigned finding inspector. Public release remains v2.1.0.
+
+---
+
+### Fixed
+- **Local beta: topology obstructions and overflow**: Replace single-obstacle detours with an indexed corridor search around all node cards, discourage shared wire segments and reserve space between leaf rows. Wrap and fit complete exported hostnames. Expand AP inventory height into available viewport space, improve compact AP columns and normalize topology toolbar gaps. User visual/performance validation pending.
+- **Local beta: PDF port tags and responsive columns**: Honor reserved label dimensions and endpoint rotation in topology PDF/SVG/PNG exports; fit long port names and paint badges after all wires. Use proportional table column widths with readable minimums and restore topology/status controls on the right of wide dashboard headers. Add repeatable column-width policy script. User testing pending.
+- **Local beta: dashboard layout and small-screen zoom**: Distribute centered gauges in equal-width rows of four, two or one, reflow summary cards and dashboard heading, isolate title-bar drag/double-click gestures from zoom buttons, fit initial window bounds to the display working area, and adapt navigation to scaled content width. Compiled only; user testing pending.
+- **Local beta: degraded infrastructure link speeds**: Check observed switch and AP links for sub-gigabit negotiation against endpoint/media capability. Accept a 1 Gbps link to a multigigabit AP, skip unknown and disconnected interfaces, deduplicate reciprocal wires, and stop flagging all 100 Mbps clients. User testing pending.
+- **Grouped finding evidence lookup**: Split comma-separated finding targets and resolve command output separately for each device, preserving per-device headings and missing-output notices. Empty explicit artifacts now fall back to retained command evidence. Testing deferred to the user.
+- **Local beta: PDF inventory and topology page**: Populate switch serial and base MAC from device-specific captured show version/inventory output and retain identity in parsed switch data. Summarize coverage on the opening page, preserve full details in an appendix, and finish with one adaptively sized vector topology page instead of tiled pages. User will perform testing.
+- **Local beta: remediation accuracy**: Replace guessed interfaces, native VLAN 1, broad STP priorities, blanket errdisable recovery, legacy QoS buffer settings and AP-reset fallbacks with read-only checks and conditional, scoped templates. Preserve actual evidence and clearly label missing output; include reviewed Cisco references.
+
+---
+
+### Security
+- **Verified Windows signing**: Share signing across release and beta installer scripts, require configured trusted timestamped signatures for public builds, remove silent self-signed fallback and unchecked success messages, persist an explicit development-only identity for local beta signing, and recompute hashes after signing. Add CI signing-secret setup, separate beta installer identity, private-key ignore rules and accurate SmartScreen documentation.
+
+---
+
+
 ## [2.1.0] - 2026-10-23
 
 ### Fixed
