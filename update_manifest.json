@@ -1,9 +1,9 @@
 {
-  "version": "2.2.1",
-  "title": "Network Health Reporter v2.2.1",
-  "releaseNotes": "### Fixed\r\n- **Router chassis identity and topology**: Read chassis PID and serial from inventory, preserve Router role in topology and Excel, count captured physical interfaces and avoid inferred router-to-core links without neighbor evidence.\r\n\r\n---\r\n\r\n### Changed\r\n- **Explicit development-signed release path**: Publish v2.2.1 locally with the existing development identity, verified installer hash and uploaded package digests; disclose SmartScreen limitations. Trusted signing remains required by CI.\r\n- **Public release asset retention**: Keep the newest stable build and preserve release records, tags, manifests and logs while pruning obsolete binary packages after successful releases.",
-  "downloadUrl": "https://github.com/LazyAutomatar/Network-Health-Reporter/releases/download/v2.2.1/NetworkHealthReporter_Setup.exe",
-  "publishedAt": "2026-10-23T10:19:12Z",
-  "sha256": "60AFEAD2EDB866D81AC996B2041BE5265C264E4F3E426C18ADC25AF4D361E8B0",
-  "fileSizeBytes": 54308392
+  "version": "2.3.0",
+  "title": "Network Health Reporter v2.3.0",
+  "releaseNotes": "### Added\r\n- **Credential vault and presets**: Add a portable AES-256 vault protected by a master password, named SSH credential profiles, optional enable secrets, apply/delete actions, exact-host matching, and optional authentication fallback for live assessments. Existing Windows host credentials can be imported without deleting their source files.\r\n\r\n### Fixed\r\n- **SG/C1000 CDP discovery**: Parse Small Business detail and wrapped neighbor tables so attached APs count without WLC inventory and observed inter-switch links retain their actual port numbers. Hide port badges on inferred links when no port was captured.\r\n- **Live CDP traversal depth**: Continue auditing switches discovered by downstream switches across multiple hops, visit each known device IP once, and retain observed switch links and the WLC's actual uplink switch for topology generation.\r\n- **Router model recognition**: Support optional 'cisco ' prefix and whitespace in Cisco router model strings (e.g. 'cisco ISR4331/K9', 'CISCO 2921') to prevent router chassis from falling back to access switches.\r\n- **Link speed analyzer status parsing**: Harden regex against port descriptions containing status keywords (e.g. 'Connected to AP', 'Monitoring server') which previously caused state, duplex, and speed columns to be misaligned.",
+  "downloadUrl": "https://github.com/LazyAutomatar/Network-Health-Reporter/releases/download/v2.3.0/NetworkHealthReporter_Setup.exe",
+  "publishedAt": "2026-10-26T09:49:05Z",
+  "sha256": "118DD812A5F41AB8C63E16E7C7743052E738B58DB427EE45CF621D493B26FF00",
+  "fileSizeBytes": 54321712
 }

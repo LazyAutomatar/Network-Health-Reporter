@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.0] - 2026-10-26
+
+### Added
+- **Credential vault and presets**: Add a portable AES-256 vault protected by a master password, named SSH credential profiles, optional enable secrets, apply/delete actions, exact-host matching, and optional authentication fallback for live assessments. Existing Windows host credentials can be imported without deleting their source files.
+
+### Fixed
+- **SG/C1000 CDP discovery**: Parse Small Business detail and wrapped neighbor tables so attached APs count without WLC inventory and observed inter-switch links retain their actual port numbers. Hide port badges on inferred links when no port was captured.
+- **Live CDP traversal depth**: Continue auditing switches discovered by downstream switches across multiple hops, visit each known device IP once, and retain observed switch links and the WLC's actual uplink switch for topology generation.
+- **Router model recognition**: Support optional 'cisco ' prefix and whitespace in Cisco router model strings (e.g. 'cisco ISR4331/K9', 'CISCO 2921') to prevent router chassis from falling back to access switches.
+- **Link speed analyzer status parsing**: Harden regex against port descriptions containing status keywords (e.g. 'Connected to AP', 'Monitoring server') which previously caused state, duplex, and speed columns to be misaligned.
+
+---
+
 ## [2.2.1] - 2026-10-23
 
 ### Fixed

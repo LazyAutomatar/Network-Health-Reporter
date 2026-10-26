@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
 
 <br>
 <img src="assets/logo.png" alt="Network Health Reporter Logo" width="160">
@@ -85,7 +85,7 @@
 
 ### 📊 Executive Deliverables & Ingestion
 * **Offline Log Parser** — Audit air-gapped networks effortlessly by uploading arbitrary CLI show command outputs or batch log files.
-* **Live SSH Audit** — Live polling with DPAPI-encrypted credential vault and Dry-Run safety verification mode.
+* **Live SSH Audit** — Live polling and bounded, multi-hop CDP switch traversal with a portable, master-password-protected AES-256 credential vault and Dry-Run safety verification mode. In **Assessments → Credentials**, create a vault, save named username/password presets with an optional enable secret, apply a preset to the active session, and optionally try unlocked presets when SSH authentication fails. Name a preset after a device IP or hostname to use it for that device during discovery. Existing Windows per-host credentials can be imported explicitly on the original Windows account; the original files are preserved. The vault stays locked after app restart, and an unrecoverable master password cannot be reset without losing access to saved presets.
 * **Handover Excel Exporter (`.xlsx`)** — 6 pre-formatted executive worksheets (Audit Summary, Topology Matrix, Full Hardware Inventory, Best Practices, and Findings).
 * **Executive PDF Report** — C-level PDF audit report with embedded high-resolution vector diagrams and prioritized action plans.
 
@@ -171,6 +171,16 @@ show wireless client summary     // (On WLC)
 ## <a id="changelog"></a>Changelog & Release History
 
 Official production releases and package distributions are hosted on [LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter).
+
+### [2.2.1] - 2026-10-23
+* **Router Chassis Identity & Topology** — Reads chassis PID and serial from inventory, preserves Router role across topology canvas and Excel handover workbooks, counts captured physical interfaces accurately, and avoids inferred router-to-core links without neighbor evidence.
+* **Release Asset Retention** — Added automated public asset pruning to keep the newest stable build and preserve all release records, tags, manifests, and logs while removing obsolete binary packages.
+
+### [2.2.0] - 2026-10-23
+* **Infrastructure Link Speed Auditing** — Checks observed switch and AP neighbor links for sub-gigabit negotiation against endpoint and media capability, separating infrastructure trunk degradation from data-port review. Discovered IP-phone and shared phone/PC ports are automatically excluded.
+* **Vector Topology & Detailed PDF Pages** — Generates auto-sized vector topology diagrams and overlapping landscape detail pages for large topologies in assessment PDF exports.
+* **Topology Usability & Manhattan Bus Routing** — Implemented indexed corridor search around all node cards, visible-node search, clickable link inspection, and complete wrapped hostnames.
+* **Evidence-Backed Diagnostics & Scoped Remediation** — Removed generic/guessed configuration commands and raw dump clutter. Replaced with read-only verification checks, actual captured command evidence, and conditional, scoped templates with verified Cisco documentation references.
 
 ### [2.1.0] - 2026-10-23
 * **CDP Connectivity Fix (BUG-01)** — Preserve every observed switch connection instead of collapsing the topology into one parent per switch. Reciprocal access neighbors no longer discard the distribution path; parallel ports and redundant uplinks remain intact.
