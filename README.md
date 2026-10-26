@@ -80,8 +80,8 @@
 * **In-Place Upgrade & Progress** — Streams update installer packages with live progress bars and transparent status messaging.
 * **Cryptographic Verification** — Validates downloaded binary SHA-256 hashes against trusted release manifests prior to execution.
 * **PE Header Safety Interceptor** — Validates Win32 executable magic byte signatures (`MZ`) before staging or running setup.
-* **Authenticode Digital Signatures** — v2.2.1 uses a self-signed development certificate for the Windows application and installer; SmartScreen warnings remain expected. Automated production releases require a trusted, timestamped signing identity.
-* **Current bugfix (v2.2.1)** — Router chassis inventory, serial numbers, topology roles and observed interface counts are corrected. Only the newest stable release retains binary downloads; earlier release notes and manifests remain available.
+* **Authenticode Digital Signatures** — Recent Windows builds use a timestamped, self-signed development certificate; SmartScreen warnings remain expected. Automated production releases require a trusted, timestamped signing identity.
+* **Current bugfix (v2.3.1)** — Live SG/CBS and router command selection follows the device family. Standalone switches no longer show false StackWise coverage gaps, and a failed SSH visit appears as one collection issue. Only the newest stable release retains binary downloads; earlier release notes and manifests remain available.
 
 ### 📊 Executive Deliverables & Ingestion
 * **Offline Log Parser** — Audit air-gapped networks effortlessly by uploading arbitrary CLI show command outputs or batch log files.
@@ -171,6 +171,13 @@ show wireless client summary     // (On WLC)
 ## <a id="changelog"></a>Changelog & Release History
 
 Official production releases and package distributions are hosted on [LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter).
+
+### [2.3.1] - 2026-10-26
+* **Live Device Compatibility** — Uses SG/CBS paging and a supported command set for Small Business switches; routers receive a focused command set and ISR/ASR CDP neighbors can be traversed.
+* **Accurate Coverage** — Standalone switches no longer require StackWise output, while an unreachable device is reported once with its SSH collection reason.
+
+### [2.3.0] - 2026-10-26
+* **CDP Discovery & Credentials** — Counts APs behind SG/C1000 switches, keeps observed link port labels, traverses downstream neighbors, and provides a portable credential vault.
 
 ### [2.2.1] - 2026-10-23
 * **Router Chassis Identity & Topology** — Reads chassis PID and serial from inventory, preserves Router role across topology canvas and Excel handover workbooks, counts captured physical interfaces accurately, and avoids inferred router-to-core links without neighbor evidence.

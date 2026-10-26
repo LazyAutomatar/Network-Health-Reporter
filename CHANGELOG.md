@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.1] - 2026-10-26
+
+### Fixed
+- **Live device command selection**: Detect SG/CBS command syntax before setting terminal paging, use supported assessment commands for Small Business switches and routers, include ISR/ASR neighbors in CDP traversal, and limit concurrent management sessions to four.
+- **Assessment coverage accuracy**: Treat StackWise commands as optional on standalone switches and report a failed device visit once with its collection reason instead of listing every command as unavailable.
+
+---
+
 ## [2.3.0] - 2026-10-26
 
 ### Added
