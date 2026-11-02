@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 <br>
 <img src="assets/logo.png" alt="Network Health Reporter Logo" width="160">
@@ -30,7 +30,7 @@
 </div>
 
 > [!IMPORTANT]
-> **100% Non-Invasive & Read-Only Safety**: Network Health Reporter strictly operates on non-disruptive `show` commands and offline CLI log files. It does **not** make configuration changes, execute write transactions, or impact control-plane traffic. Safety is enforced by a hardcoded `CommandGuard` interceptor.
+> **Read-only application operation**: Network Health Reporter requests diagnostic commands and can analyze supplied CLI log files offline. Its command guard blocks configuration requests from the app. Reports record the application's own command policy checks; imported files cannot establish how their source commands were collected or whether other network changes occurred.
 
 ---
 
@@ -68,6 +68,7 @@
 * **Hardware & PoE Budgets** — Audits dual power-supply redundancy, fan module states, and PoE capacity per stack member.
 * **Wireless RF Health** — Audits Cisco Catalyst 9800 / AireOS controllers, AP channel utilization, co-channel interference, and client distribution.
 * **Assessment Coverage** — Missing or rejected command output produces coverage notes in the dashboard and reports. Scores reflect available evidence; a partial assessment does not certify full network health.
+* **Capture-Backed Alerts & Deep Auditing** — Concatenated backup jobs are split by device; timestamped captures can show growing interface discards or FCS errors. The Alerts view also reports optical RX alarms, discovery address mismatches, SNMP ACL references, credential storage forms, remote logging, SSH MAC settings, DHCP pool and relay overlap, and unused ports when supporting commands are captured.
 * **Evidence and Unknown Values** — Successful live command output is retained for evidence lookup. Missing device addresses, inventory and radio measurements remain unknown rather than receiving sample values.
 
 ### 💻 Cross-Platform Native Experience
@@ -81,7 +82,7 @@
 * **Cryptographic Verification** — Validates downloaded binary SHA-256 hashes against trusted release manifests prior to execution.
 * **PE Header Safety Interceptor** — Validates Win32 executable magic byte signatures (`MZ`) before staging or running setup.
 * **Authenticode Digital Signatures** — Recent Windows builds use a timestamped, self-signed development certificate; SmartScreen warnings remain expected. Automated production releases require a trusted, timestamped signing identity.
-* **Current bugfix (v2.3.1)** — Live SG/CBS and router command selection follows the device family. Standalone switches no longer show false StackWise coverage gaps, and a failed SSH visit appears as one collection issue. Only the newest stable release retains binary downloads; earlier release notes and manifests remain available.
+* **Current release (v2.4.2)** — False-positive alert exclusion with dynamic score recalculation, editable Word (.docx) assessment exports, capture-backed interface and configuration auditing, and cleaned multi-device roadmap headings. Only the newest stable release retains binary downloads; earlier release notes and manifests remain available.
 
 ### 📊 Executive Deliverables & Ingestion
 * **Offline Log Parser** — Audit air-gapped networks effortlessly by uploading arbitrary CLI show command outputs or batch log files.
@@ -144,24 +145,7 @@ Network Health Reporter parses standard Cisco IOS, IOS-XE, and AireOS telemetry 
 
 ## <a id="telemetry--commands-guide"></a>Telemetry & Commands Guide
 
-For **Offline Audits**, save the outputs of the following standard Cisco CLI commands from your core switch and access switches into `.txt` or `.log` files, then drop them into the app:
-
-```csharp
-show version
-show cdp neighbors detail
-show cdp neighbors
-show lldp neighbors detail
-show running-config
-show ip route
-show interfaces status
-show interfaces description
-show spanning-tree summary
-show power inline
-show environment power
-show environment fan
-show ap summary                  // (On WLC or Mobility Express)
-show wireless client summary     // (On WLC)
-```
+For **offline audits**, open **Assessments → Commands** and copy the profile for each device family. The Catalyst IOS-XE profile includes the application's 19 baseline coverage commands and 8 additional diagnostics. The Catalyst 1000, SG/SF/CBS and router profiles use shorter device-specific lists. The Catalyst 9800 WLC profile has 11 coverage commands and 2 optional identity/resource commands; direct AP inventory uses 3 commands. Run only the matching block on each device and save the full command output to `.txt` or `.log`, including command headers and unsupported responses. The app distinguishes missing applicable output from commands a device explicitly rejects. Running configuration and other captures may contain secrets; keep raw logs private.
 
 > [!TIP]
 > The parser automatically extracts the device hostname, management IP, model platform, and uplink paths even if all commands are concatenated into a single master log file.
@@ -172,6 +156,18 @@ show wireless client summary     // (On WLC)
 
 Official production releases and package distributions are hosted on [LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter).
 
+### [2.4.2] - 2026-11-02
+* **False-Positive Alert Exclusion & Dynamic Recalculation** -- Added row-level alert dismissal in the Alerts center and inspection dialogs with dynamic score deduction recalculation and instant synchronization across all report formats (Markdown, Word .docx, PDF, Excel .xlsx, and CSV).
+* **Editable Word (.docx) Handover Assessment** -- Added native Word report export alongside Markdown, PDF, and Excel, featuring structured executive summaries, findings with raw CLI evidence, and multi-device remediation roadmaps.
+* **Capture-Backed Interface & Configuration Auditing** -- Added deep parsing for concatenated backup files, optical SFP RX alarm thresholds, DHCP relay/lease overlap detection, semantic config drift, discovery address mismatches, remote STP root detection, and reversible credential exposure.
+* **Clean Alert Titles & Multi-Device Roadmap Normalization** -- Generalized finding titles and grouped roadmap table headings in PDF and Word reports, keeping specific switch hostnames exclusively in affected device lists.
+
+### [2.4.1] - 2026-10-28
+* **11-Page PDF Executive Reporting & Centered Topology** â€” Condensed assessment reporting from 19 to 11 pages with zero telemetry loss. Page 1 features a centered distribution schematic with visual AP count badges ([N APs]), full vector appendix, equal-width health-band KPI cards, severity strip, and consolidated multi-device remediation roadmap.
+* **Offline Assessment Rule Engine & Telemetry Integrity** â€” 26 deterministic campus assessment rules across 6 core operational categories with percentage-based health scores and objective Pass/Warn/Fail classifications. Fixed STP Root Guard, PSU redundancy, dynamic stack ring degradation, and CleanAir telemetry validation.
+* **Alerts Center & Flagged CLI Evidence** â€” Revamped roadmap view into an enterprise switch health parser Alerts Center with severity filters, instant search, and one-click copyable raw CLI terminal inspect evidence.
+* **Evidence-Backed Network Planning Panel** â€” Added observed switch/port impact simulation, live capacity history, engineer effort estimates, and advisory remediation ordering with command evidence.
+* **Live and Offline Assessment Parity** â€” Aligned Catalyst configuration collection and role detection, preserved backup AP identity, suppressed faults from uncaptured uptime, PSU and STP data, and deduplicated shared-port speed reviews.
 ### [2.3.1] - 2026-10-26
 * **Live Device Compatibility** — Uses SG/CBS paging and a supported command set for Small Business switches; routers receive a focused command set and ISR/ASR CDP neighbors can be traversed.
 * **Accurate Coverage** — Standalone switches no longer require StackWise output, while an unreachable device is reported once with its SSH collection reason.

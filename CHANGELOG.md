@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to the **Network Health Reporter** project will be documented in this file.
 
@@ -7,6 +7,54 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.4.2] - 2026-11-02
+
+### Added
+- **False-positive alert exclusion and report synchronization**: Added row-level alert dismissal in the Alerts center and inspection dialogs, allowing engineers to eliminate false-positive anomalies. Assessment scores dynamically recalculate via itemized deduction exclusions, and all report exports (Markdown, Word .docx, PDF, multi-tab Excel .xlsx, and CSV) immediately reflect the excluded findings. Excluded alerts can be filtered and restored individually or in bulk.
+- **Capture-backed interface and configuration alerts**: Parse concatenated backup jobs by device; compare dated interface counters; report optical RX alarms, DHCP relay and lease overlap, semantic config drift, discovery address mismatch, remote STP roots, undefined SNMP ACLs, reversible credentials, missing syslog, weak SSH MACs and unused VLAN 1 ports.
+- **Cisco resolution references for alerts**: Map rule and existing agent alert IDs to official Cisco troubleshooting and configuration documentation. Display reference titles and platform applicability in the evidence viewer while preserving assessment logic, evidence and diagnostic commands.
+- **Editable Word assessment report**: Added a DOCX export on the Reports page using the same evidence, coverage notes, inventory and detailed findings as Markdown, with embedded topology and clean table formatting.
+- **Private capture replay gate**: An opt-in script rechecks a supplied offline capture set without storing customer logs in the repository.
+
+---
+
+### Changed
+- **Clean architectural report export**: Removed experimental cross-device matrix and VLAN architecture tables from Markdown, PDF, and Word reports to eliminate truncated device overruns on multi-switch campuses and prevent misleading orphaned VLAN claims from partial SVI captures.
+- **Evidence-first alert evaluation**: Run supported rules after live SSH collection, preserve findings per device and port, redact inspected CLI artifacts, choose a smaller C1000 command profile, and replace unsupported root-cause and automatic remediation claims in existing rules with verification guidance.
+- **Assessment fidelity for local beta**: Parse controller HA and active processor metrics from captured output; leave uncaptured RF and client-band values unknown; remove site-specific WLAN, VLAN, port and channel-group assumptions and synthetic channel-utilization alerts; correlate AP events only with confirmed switch and port counters. Reports now state the assessment source, distinguish observations from causes and score deductions, show CDP-only APs, and avoid claiming that imported logs prove collection safety. Unsupported device commands are separated from missing applicable commands.
+- **Indexed capacity history and cached impact lookups**: Index device/port samples per refresh, skip unchanged history writes and retain failed saves for retry. Cache device identity and port comparisons within each impact calculation while preserving matching and retention behavior.
+- **Responsive alerts and planning controls**: Debounce alert searches, reuse severity ordering, avoid splitting full CLI captures for row previews, and update effort rankings without rebuilding topology targets, parsing capacity data or writing history. Cache finding evidence until the next assessment refresh.
+- **Alert list scrolling**: Use steady-height, single-line cells in the Alerts grid so long evidence and guidance do not repeatedly expand rows during scrolling. Full text remains available through Inspect CLI and CSV export.
+- **Commands catalog parity**: The in-app copy blocks now match live Catalyst IOS-XE, Catalyst 1000, SG/SF/CBS, router, WLC and AP capture profiles. Coverage commands and additional diagnostics are labelled separately, and WLC/AP lists are visible in the Commands tab.
+
+---
+
+### Fixed
+- **Clean Alert Titles & Multi-Device Roadmap Grouping**: Removed device hostname interpolation from alert titles across rules, agents, and link speed analyzers. Generalized grouped roadmap table headers in PDF and Word reports so specific switch names are excluded from the title and displayed exclusively in the affected device list.
+- **L2 switch topology role classification**: Keep Layer-2 and access switches on the access-switch Visio stencil even when they are the discovery seed or an STP root, and prevent false core-only STP root alerts when no core or Layer-3 evidence was captured.
+- **Credential vault UI integration**: Retain Bulk Switch Backup-style encrypted presets and existing vault compatibility; run save/delete/import off the UI thread, prevent overlapping vault actions or live assessment starts, show busy progress, and normalize profile names before replacement to prevent duplicate entries.
+- **Live collection and UI command catalog parity**: Use the UI catalog as the Catalyst and C9800 live command source. Add missing operational parser, capacity and radio inputs; display switch, controller and AP references together and document restricted SG/CBS/router profiles. Exclude stack-port evidence from standalone coverage requirements.
+- **Portable PDF inventory font**: Use bundled Lato when Consolas is unavailable, preventing PDF export failures on Linux, macOS and minimal Windows installations.
+
+
+## [2.4.1] - 2026-10-28
+
+### Added
+- **11-Page PDF Executive Reporting & Centered Topology**: Condensed audit reports from 19 to 11 pages with zero information loss, featuring a centered distribution schematic with visual AP count badges, dedicated vector appendix, equal-width health-band KPI cards, severity strip, and consolidated multi-device remediation roadmap.
+- **Offline Assessment Rule Engine**: Introduced a modular offline rule engine featuring 26 deterministic campus assessment rules across 6 core operational categories (Security, Layer 2 / Spanning Tree, Management & Telemetry, Hardware & Capacity, L3 & DHCP, and Wireless & Cross-Device).
+- **Flagged Raw CLI Evidence & Inspect CLI Terminal Card**: Updated FindingEvidenceResolver and FindingEvidenceView to bind and render exact triggered CLI terminal output lines (CliArtifact) and commands (CliCommand), with 'Copy Raw Evidence' and inline previews.
+- **Campus & Switch Health Parser Alerts Center**: Restructured the Roadmap tab into an enterprise Alerts center with 4 top KPI cards, instant search across devices/rules/commands/evidence, and severity filter pills.
+- **Evidence-Backed Network Planning Panel**: Added observed switch/port impact simulation, live capacity history, engineer effort estimates, and advisory remediation ordering with command evidence.
+- **Enterprise-Grade Offline Parsers & Secret Redaction**: Added CiscoConfigParser and CiscoOperationalParser with structured models to reliably parse configurations and operational show outputs, with SecretRedactor to sanitize sensitive data.
+
+### Fixed
+- **Live and Offline Assessment Evidence Parity**: Aligned Catalyst configuration collection and role detection; preserved backup AP identity; suppressed faults from uncaptured uptime, PSU and STP data; compared reciprocal native-VLAN observations; deduplicated shared-port speed reviews.
+- **Report Integrity & Telemetry Ground-Truth**: Removed hardcoded STP Root Guard assertions, dynamically derived Stack Status from ring configuration and broken link counters, populated switch PSU redundancy dynamically, and eliminated placeholder zero values in wireless telemetry.
+- **Port-Channel Topology & Visio Visualization**: Restored multi-link member expansion and Port-Channel bundle visualization across both Visio OpenXML export and interactive topology canvas.
+- **Precision Evidence Snippets & Drop Classification**: Clarified buffer egress drop findings on unknown or non-AP connected ports, and replaced full configuration dumps with targeted 15-line snippets.
+- **Desktop UI Title Bar & DPI Awareness**: Fixed double title bar and overlapping navigation caption buttons on Windows high-DPI displays.
+
+---
 ## [2.3.1] - 2026-10-26
 
 ### Fixed
