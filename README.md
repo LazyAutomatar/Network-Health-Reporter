@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
 
 <br>
 <img src="assets/logo.png" alt="Network Health Reporter Logo" width="160">
@@ -155,6 +155,11 @@ For **offline audits**, open **Assessments → Commands** and copy the profile f
 ## <a id="changelog"></a>Changelog & Release History
 
 Official production releases and package distributions are hosted on [LazyAutomatar/Network-Health-Reporter](https://github.com/LazyAutomatar/Network-Health-Reporter).
+
+### [2.4.3] - 2026-11-05
+* **Multi-Branch Release Consolidation** -- Fully integrated offline rule engine enhancements, native Word (.docx) reporting, device-family command catalog parity, responsive alert controls, credential vault UI compatibility, and row-level false-positive alert dismissal.
+* **Configuration Drift False-Positive Suppression** -- Enhanced `RunningConfigDifferenceRule` (`MGMT-OPS-003`) to filter Cisco IOS `banner` delimiter artifacts (`^C` control characters and caret delimiters) between `nvram:startup-config` and `system:running-config`, eliminating phantom drift alerts after `write memory`.
+* **Self-Healing CI Release Pipeline** -- Added automated fallback to self-signed development certificates in the GitHub Actions release workflow when commercial Authenticode signing secrets are not supplied, ensuring dependable unattended cross-platform packaging.
 
 ### [2.4.2] - 2026-11-02
 * **False-Positive Alert Exclusion & Dynamic Recalculation** -- Added row-level alert dismissal in the Alerts center and inspection dialogs with dynamic score deduction recalculation and instant synchronization across all report formats (Markdown, Word .docx, PDF, Excel .xlsx, and CSV).

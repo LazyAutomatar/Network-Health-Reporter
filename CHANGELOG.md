@@ -1,9 +1,22 @@
-# Changelog
+﻿# Changelog
 
 All notable changes to the **Network Health Reporter** project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [2.4.3] - 2026-11-05
+
+### Added
+- **Full multi-branch release consolidation**: Unified offline rule engine enhancements, Word (.docx) assessment reporting, device-family command catalog parity, responsive alert controls, credential vault UI compatibility, and row-level false-positive alert dismissal into the main release track.
+
+### Changed
+- **CI release pipeline self-healing**: Added automated fallback to self-signed development certificates in the GitHub Actions release workflow when commercial Authenticode signing secrets are not supplied, ensuring dependable unattended cross-platform packaging.
+
+### Fixed
+- **Configuration drift false-positive suppression**: Enhanced `RunningConfigDifferenceRule` (`MGMT-OPS-003`) to filter Cisco IOS `banner` delimiter artifacts (`^C` control characters and caret delimiters) between `nvram:startup-config` and `system:running-config`, eliminating phantom drift alerts after `write memory`.
 
 ---
 
